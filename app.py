@@ -19,13 +19,12 @@ def get_llm():
     return AzureChatOpenAI(
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
         openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-        openai_api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+        api_key=os.getenv("AZURE_OPENAI_API_KEY"),
         deployment_name=os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME"),
-        model_name="gpt-4",
+        model="gpt-4",  # fixed from model_name
         temperature=0.7,
-        max_tokens=500,
+        max_tokens=500
     )
-
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
